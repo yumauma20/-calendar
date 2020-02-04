@@ -27,7 +27,8 @@ class CalendarController extends Controller
     }
     public function index(Request $request)
     {
-        $cal = new Calendar();
+        $list = Holiday::all();
+        $cal = new Calendar($list);
         $tag = $cal->showCalendarTag($request->month,$request->year);
 
         return view('calendar.index', ['cal_tag' => $tag]);

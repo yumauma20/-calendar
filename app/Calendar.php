@@ -5,6 +5,12 @@ namespace App;
 class Calendar
 {
     private $html;
+    private $holidays;
+
+    function __construct($holidays) {
+        $this->holidays = $holidays;
+    }
+
     public function showCalendarTag($m, $y)
     {
         $year = $y;
@@ -42,7 +48,15 @@ class Calendar
                     //先月・来月の場合
                     $this->html .= "<td>&nbsp;</td>";
                 } else {
-                    $this->html .= "<td>" . $day . "</td>";
+                    $this->html .= "<td>" . $day . "&nbsp";
+                    $target = date("Y-m-d", mktime(0, 0, 0, $month, $day, $year));
+                    foreach($this->holidays as $val) {
+                        if ($val->day == $target) {
+                            $this->html .= $val->description;
+                            break;
+                        }
+                    }
+                    $this->html .= "</td>";
                 }
                 $day++;
             }
