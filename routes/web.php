@@ -17,3 +17,5 @@ Route::post('/holiday','CalendarController@postHoliday');
 Route::get('/','CalendarController@index');
 
 Route::get('/holiday/{id}','CalendarController@getHolidayId');
+
+Route::delete('/holiday','CalendarController@deleteHoliday');
