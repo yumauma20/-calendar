@@ -12,6 +12,7 @@
             <input type="text" name="description" class="form-control" id="description"> 
         </div>
         <button type="submit" class="btn btn-primary">登録</button> 
+        <a href="{{ url('/') }}">カレンダーに戻る</a>
     </form> 
     <!-- 休日一覧表示 -->
     <table class="table">

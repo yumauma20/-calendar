@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Calendar;
 use App\Holiday;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,12 @@ class CalendarController extends Controller
         //休日データ取得
         $list = Holiday::all();
         return view('calendar.holiday', ['list' => $list]);
+    }
+    public function index(Request $request)
+    {
+        $cal = new Calendar();
+        $tag = $cal->showCalendarTag($request->month,$request->year);
+
+        return view('calendar.index', ['cal_tag' => $tag]);
     }
 }
