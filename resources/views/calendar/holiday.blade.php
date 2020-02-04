@@ -15,6 +15,15 @@
         <input type="hidden" name="id" value="{{$data->id}}">
         <a href="{{ url('/') }}">カレンダーに戻る</a>
     </form> 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <!-- 休日一覧表示 -->
     <table class="table">
         <thead>
